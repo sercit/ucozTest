@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/mustache.js"></script>
+        <script src="js/script.js"></script>
+	</head>
+	<body onload="loadUser()">
+        <div class="form">
+            <form id="form" type="add">
+                <h3>Add book:</h3>
+                <input type="text" name="id" id="id" hidden><br/>
+                <label for="name">Name</label><br/>
+                <input type="text" name="name" id="name" placeholder="Name" required><br/>
+                <label for="author">Author</label><br/>
+                <input type="text" name="author" id="author" placeholder="Author" required><br/>
+                <label for="year">Year</label><br/>
+                <input type="number" min="-5000" max="5000" name="year" id="year"  placeholder="Year" required><br/>
+                <label for="name">Pages</label><br/>
+                <input type="number" min="1" max="50000" name="pages" id="pages" placeholder="Pages" required><br/>
+                <input type="submit">
+            </form>
+        </div>
+        <section id="books">
+            Loading...
+        </section>
+        <script id="book-template" type="x-tmpl-mustache">
+            <article class="book" id="book{{ id }}">
+                <h4>{{ name }}</h4>
+                <author>{{ author }}</author>
+                <div class="nav">
+                    <button class="edit" onclick="editForm({{ id }});">edit</button>
+                    <button class="delete" onclick="deleteBook({{ id }});">delete</button>
+                </div>
+            </article>
+        </script>
+	</body>
+</html>
